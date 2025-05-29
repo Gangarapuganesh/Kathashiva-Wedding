@@ -247,34 +247,63 @@
 
 <!-- Scripts -->
 <script>
-    const music = document.getElementById("bg-music");
-    const toggleBtn = document.getElementById("music-toggle");
+  const audio = document.getElementById('bg-music');
+  const control = document.querySelector('.music-control');
 
-    // Function to play music on first interaction
-    const tryPlayMusic = () => {
-      music.play().then(() => {
-        console.log("Music playing!");
-      }).catch(err => {
-        console.log("Music failed to play:", err);
-      });
-
-      // Remove listeners after first interaction
-      document.removeEventListener("click", tryPlayMusic);
-      document.removeEventListener("scroll", tryPlayMusic);
-      document.removeEventListener("touchstart", tryPlayMusic);
-    };
-
-    // Listen for any interaction
-    document.addEventListener("click", tryPlayMusic);
-    document.addEventListener("scroll", tryPlayMusic);
-    document.addEventListener("touchstart", tryPlayMusic);
-
-    // Mute/unmute toggle
-    toggleBtn.addEventListener("click", () => {
-      music.muted = !music.muted;
-      toggleBtn.textContent = music.muted ? "🔇" : "🔈";
+  // Ensure music always plays
+  window.addEventListener('load', () => {
+    audio.play().catch(() => {
+      control.textContent = '🕺'; // fallback if autoplay fails
     });
-  </script>
+  });
+
+  function toggleMusic() {
+    audio.play(); // Always force play
+    control.textContent = '🕺';
+  }
+
+  // Prevent pause — always resume
+  audio.addEventListener('pause', () => {
+    audio.play();
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  document.querySelectorAll(".gallery-scroll img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+    });
+  });
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  // Countdown
+  const weddingDate = new Date("June 5, 2025 11:52:00").getTime();
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) {
+      countdownEl.innerHTML = "We're Married!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `${days}d ${hrs}h ${mins}m ${secs}s left`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
 
 </body>
 </html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Invitation - Shiva ❤️ Shirisha</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: #fff0f5;
+    }
+
+    header {
+      background: url(https://wallpapercave.com/wp/wp2840685.png) center/cover no-repeat;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      top: 45%;
+      transform: translateY(-50%);
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+
+    .countdown {
+      margin-top: 10px;
+      font-size: 1.5rem;
+      color: #ffcccb;
+    }
+   .view-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+      transition: background 0.3s ease;
+    }
+
+    .view-button:hover {
+      background-color: #e0559b;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 rgba(255,105,180, 0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,105,180, 0.6); }
+      100% { transform: scale(1); box-shadow: 0 0 0 rgba(255,105,180, 0); }
+    }
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .gallery-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 10px 20px;
+    }
+
+    .gallery-scroll img {
+      height: 180px;
+      border-radius: 12px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    .qr-section img {
+      width: 180px;
+      margin-top: 20px;
+    }
+
+    .location-button {
+      background-color: #ff69b4;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .location-button:hover {
+      background-color: #e0559b;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: red;
+      clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    footer {
+      background: pink;
+      color: black;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+<div class="music-control" onclick="toggleMusic()">🔊</div>
+
+<!-- Hearts -->
+<script>
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    document.body.appendChild(heart);
+  }
+</script>
+
+<!-- Hero -->
+<header>
+  <div class="hero-content">
+    <h1>Shiva ❤️ Shirisha</h1>
+    <p>You're invited to our wedding</p>
+    <div class="countdown" id="countdown"></div>
+    <a href="#invitation-details" class="view-button">💌 View Details Scroll Down</a>
+
+  </div>
+</header>
+
+<!-- Invitation Details -->
+<div class="section">
+  <h2>Wedding Invitation</h2>
+<p>We joyfully invite you to the wedding of</p>
+  <p>We solicit your gracious presence with family & friends on the auspicious occasion of the marriage of our <strong>Son (Only one)</strong></p>
+  <h3>Chi. Shiva Prasad</h3>
+  <p>with</p>
+  <h3>Chi. La. Sow. Shirisha</h3>
+  <p>(Younger daughter of Smt. & Sri. Racherla Kavita & Anil)</p>
+
+  <h4>Sumuhurtham:</h4>
+<p>🗓️ Thursday, June 5, 2025<br>
+     ⏰ 11:52 AM (Abhijit Lagnam)<br>
+     📍 Bommak V.V.S Convention, Boduppal colony road, Nacharam, Secunderabad, Hyderabad</p>
+
+  <h4>Venue:</h4>
+  <p><strong>Bommak V.V.S Convention</strong><br>Boduppal Colony Rd, Nacharam, Secunderabad, Hyderabad</p>
+
+  <h4>Reception & Dinner:</h4>
+  <p>Same Day</p>
+
+  <p>With best compliments from: <strong>Smt. K. Laxmi & Sri. K. Shanker</strong></p>
+</div>
+
+<!-- Gallery -->
+<div class="section">
+  <h2>Photo Gallery</h2>
+  <div class="gallery-scroll">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="images/shiva4.jpg" alt="">
+    <img src="images/shiva2.jpg" alt="">
+    <img src="images/shiva3.jpg" alt="">
+    <img src="C:\Users\ganga\Downloads\Shiva Wedding\Wedding\IMG-20250528-WA0003.jpg" alt="">
+    <img src="C:\Users\ganga\Downloads\Shiva Wedding\Wedding\IMG-20250528-WA0007.jpg" alt="">
+    <img src="C:\Users\ganga\Downloads\Shiva Wedding\Wedding\IMG-20250528-WA0006.jpg" alt="">
+    <img src="C:\Users\ganga\Downloads\Shiva Wedding\Wedding\IMG-20250526-WA0005.jpg" alt="">
+    <img src="C:\Users\ganga\Downloads\Shiva Wedding\Wedding\IMG-20250528-WA0003.jpg" alt="">
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- QR Code and Location -->
+<div class="section qr-section">
+  <h2>Save the Date</h2>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=Wedding%20Shiva%20%26%20Shirisha%20-%20June%205,%202025⏰ 11:52 AM (Abhijit Lagnam)
+📍 Bommak V.V.S Convention, Boduppal colony road, Nacharam, Secunderabad, Hyderabad" alt="QR Code">
+  <br>
+  <button class="location-button" onclick="window.open('https://maps.google.com/?q=Bommak+V.V.S+Convention+Boduppal+Colony+Rd+Nacharam+Secunderabad+Hyderabad', '_blank')">
+    📍 View Wedding Location
+  </button>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-6 text-center">
+  <center><p>Made with ❤️ by Ganesh</p></center>
+  <center><p>&copy; 2025 Shiva & Shirisha</p></center>
+</footer>
+
+<!-- Scripts -->
+<script>
+  const audio = document.getElementById('bg-music');
+  const control = document.querySelector('.music-control');
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      control.textContent = '🔊';
+    } else {
+      audio.pause();
+      control.textContent = '🔇';
+    }
+  }
+
+  // Lightbox
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  document.querySelectorAll(".gallery-scroll img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+    });
+  });
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  // Countdown
+  const weddingDate = new Date("June 5, 2025 11:52:00").getTime();
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) {
+      countdownEl.innerHTML = "We're Married!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `${days}d ${hrs}h ${mins}m ${secs}s left`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
+</body>
+</html>

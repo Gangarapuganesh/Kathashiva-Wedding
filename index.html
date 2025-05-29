@@ -13,7 +13,7 @@
     }
 
     header {
-      background: url(IMG-20250526-WA0005.jpg) center/cover no-repeat;
+      background: url(Bg1) center/cover no-repeat;
       height: 100vh;
       color: white;
       text-align: center;
@@ -99,13 +99,13 @@
       max-height: 90%;
     }
 
-     .music-control {
+    .music-control {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: white;
-      border-radius: 50%;
-      padding: 10px;
+      background: orange;
+      border-radius: 40%;
+      padding: 40px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       z-index: 1000;
       cursor: pointer;
@@ -158,10 +158,11 @@
 <body>
 
 <!-- Music -->
-<audio id="bg-music" autoplay loop>
+  <audio id="bg-music" autoplay loop>
   <source src="updated_song" type="audio/mp3">
 </audio>
 <div class="music-control" onclick="toggleMusic()">🔊</div>
+
 
 
   
@@ -260,7 +261,6 @@
       control.textContent = '🔇';
     }
   }
-
   // Lightbox
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
@@ -292,7 +292,7 @@
     const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownEl.innerHTML = ${days}d ${hrs}h ${mins}m ${secs}s left;
+    countdownEl.innerHTML = `${days}d ${hrs}h ${mins}m ${secs}s left`;
   }
 
   setInterval(updateCountdown, 1000);

@@ -99,13 +99,13 @@
       max-height: 90%;
     }
 
-    .music-control {
+     .music-control {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: orange;
-      border-radius: 40%;
-      padding: 30px;
+      background: white;
+      border-radius: 50%;
+      padding: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       z-index: 1000;
       cursor: pointer;
@@ -158,11 +158,11 @@
 <body>
 
 <!-- Music -->
-<audio id="bg-music" autoplay loop>
-  <source src="Updated song.mp3" type="audio/mp3">
+ <audio id="bg-music" autoplay loop>
+  <source src="updated song.mp3" type="audio/mp3">
 </audio>
 <div class="music-control" onclick="toggleMusic()">🔊</div>
-
+  
 <!-- Hearts -->
 <script>
   for (let i = 0; i < 25; i++) {
@@ -249,23 +249,15 @@
 <script>
   const audio = document.getElementById('bg-music');
   const control = document.querySelector('.music-control');
-
-  // Ensure music always plays
-  window.addEventListener('load', () => {
-    audio.play().catch(() => {
-      control.textContent = '🕺'; // fallback if autoplay fails
-    });
-  });
-
   function toggleMusic() {
-    audio.play(); // Always force play
-    control.textContent = '🕺';
+    if (audio.paused) {
+      audio.play();
+      control.textContent = '🔊';
+    } else {
+      audio.pause();
+      control.textContent = '🔇';
+    }
   }
-
-  // Prevent pause — always resume
-  audio.addEventListener('pause', () => {
-    audio.play();
-  });
 
   // Lightbox
   const lightbox = document.getElementById("lightbox");
@@ -298,7 +290,7 @@
     const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownEl.innerHTML = `${days}d ${hrs}h ${mins}m ${secs}s left`;
+    countdownEl.innerHTML = ${days}d ${hrs}h ${mins}m ${secs}s left;
   }
 
   setInterval(updateCountdown, 1000);
